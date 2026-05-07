@@ -76,7 +76,8 @@ export class NativeInterpreter extends JSChannel_ {
       const target = event.target;
       if (
         target instanceof HTMLInputElement &&
-        target.getAttribute("type") === "file"
+        target.getAttribute("type") === "file" &&
+        !(navigator.userAgent.includes("Android") || navigator.userAgent.includes("iPhone"))
       ) {
         // Send a message to the host to open the file dialog if the target is a file input and has a dioxus id attached to it
         let target_id = getTargetId(target);
